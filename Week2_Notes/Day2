@@ -1,0 +1,58 @@
+# Week 2 Day 2
+
+# Central Limit Theorem
+- the distribution of the set of means from any distribution converge to the normal distribution
+
+# Confidence Intervals
+- with a 95% confidence interval, you say that with repeated samplings from a population, the 95% confidence interval for each sample would contain the real population mean 95% of the time
+
+# Estimation
+
+## Objectives
+- Recall what the expected value and variance of a random variable are
+- Use Maximum Likelihood Estimation (MLE) to estimate a parametric distribution from observed data
+- Use the Method of Moments (MoM) to estimate a parametric distribution from observed data
+- Understand how Kernel Density Estimation (KDE) estimates a non-parametric distribution from observed data
+
+## Notes
+- in general MLE is better than MoM
+- Expected value is just the weighted sum
+- computers have a hard time doing arithmetic on small numbers so often times we will compute the log of things (logs are increasing functions and will not change the relationships between things)
+
+\[Var(X) = E[(X - E[X])^2]\]
+\[Var(X) = E[X^2] - E[X]^2\]
+
+- the amount of things that happen in a set amount of time is a **Poisson** thing
+- **Parametric Inference** - assumes that you know what the type of distribution of data you have. You may not know the relevant parameters but you know what you are looking for
+- **Non-Parametric Inference** - assumes you know nothing (could be binomial, normal, poissons, geometric...), this is a more flexible case, but is less interpretable
+    - you can use KDE (basically a smoothed histogram) to build an empirical distribution function from the data that you have, the problem with this is that it's hard to interpret or to predict information from this
+
+## Maximum Likelihood Estimation (MLE) (Parametric)
+- Assume that the datapoints are all drawn independently from the same distribution with density $f(x|\theta)$ where $\theta$ represents our parameters
+- We want to solve for $\theta$ to maximize the likelihood of an event
+    - basically, we have some data, let's back-calculate and determine the most likely parameters $\theta$ which might have generated those values
+    - the likelihood can be greater than 1, it isn't a probability
+- with MLE of a normal distribution the MLE estimate of $\hat\sigma$ is S not little s. This is a result of the MLE method.
+    - $S^2$ is a biased estimator because you use 1/N, $s^2$ is unbiased because you use 1/(n-1)
+### Ex. Coin flips - MLE
+```
+N flips, H heads
+Best guess p_hat = H/N
+one_flip ~ Bern(p)
+set_of_flips ~ Binom(N, p)
+```
+The set of flips is a binomial distribution where p is the probability of heads out of N.
+\[f(x) = p^x(1 - p)^{N-x}\]
+We ignore the n choose k part of the binomial distribution because we are doing MLE where usually we don't need to actually calculate constants because that won't change the maximum $\theta$ value.
+
+#### Likelihood
+\[L(p|H) = p^H(1-p)^{N-H} \]
+#### Log-Likelihood
+\[L(p|H) = Hlogp + (N-H)log(1-p) \]
+- in order to maximize you have to compute the derivative
+\[\frac{dl}{dp} = 0 = \frac{H}{p} - (N-H)\frac{1}{1-p}\]
+\[\hat p = \frac{H}{N}\]
+
+### Method of Moments (MoM) (Parametric)
+- a moment is E[X], E[X^2]...etc
+- each moment will give you an equation and you can use these to derive equations and parameters

@@ -1,0 +1,62 @@
+# Week 2 Day 1
+
+## Probability
+
+### Objectives
+- Review probability definitions and concepts
+- Review combinatorics definitions and concepts
+- Review probability definitions
+- Understand which distributions to use to model which processes
+
+### Definitions
+-
+    - P(Aand B) = 0
+- Probablity Measure
+
+- the expected value of a probability distribution is really just a weighted average
+
+# Sets
+Sample Space - the set of all outcomes of a random experiment
+- Event Space - a set of elements (events) which are subsets of the larger sample space
+- Disjoint Events - two events whose probability of occurring at the same time is 0
+- $\cup$ = union, P(A $\cup$ B) is the probability of A **OR** B
+- $\cap$ = intersection, P(A $\cap$ B) is the probability of A **AND** B
+- $\in$ = element in, a $\in$ A is element a in the set A
+- Complement: $A^c$ = $\{x: x \notin A\}$ the elements of x where x is not in A
+- ':' = 'such that'
+
+# Combinatorics
+
+\[{n \choose k} = \frac{n!}{(n-k)!k!}\]
+
+# Probability
+- data is random, we need to be able to model randomness
+- Frequentist - how likely an event is given probability
+- Bayesian - how likely our beliefs are to be correct given a probability
+- enumeration of all possible outcomees is not a terrible idea to get a sense of probability of something
+
+# Distributions
+
+- **Variance** - The variance of a random variable X is a measure of how concentrated the distribution of a random variable X is around its mean.
+- **Geometric** - no no no no no no no yes
+- **Poisson** - # number of events in a period of time
+- **chi-squared** - the sum of the squares of many normally distributed distributions
+
+ ![](images/prob_dist.png)
+
+**Correlation** is a hint but is no guarantee of a relationship or lack-thereof
+
+
+#### Properties of distributions
+- expectation/mean
+- kurtosis - tells you if you have fat tails on your distribution (ex. T-dist)
+- skew - measures the asymmetry of a distribution
+- variance/std
+- correlation
+
+### Warning, numpy!
+- numpy defaults to population equations, not sample values, so be careful and check the manual to make sure that the degrees of freedom and things are all consistent
+
+## References
+
+[Statistics Symbols](http://www.rapidtables.com/math/symbols/Statistical_Symbols.htm)
